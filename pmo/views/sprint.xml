@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <!--tree view of the sprint model -->
+    <record id="sprint_tree" model ="ir.ui.view">
+        <field name="name">pmo.sprint.tree</field>
+        <field name="model">pmo.sprint</field>
+        <field name="arch" type="xml">
+            <tree string="sprints">
+                <field name="name"/>
+                <field name="sprint_sequence"/>
+                <field name="attendants"/>
+                <field name="status"/>
+            </tree>
+        </field>
+    </record>
+
+<!--form view of the sprint model -->
+    <record id="sprint_form" model="ir.ui.view">
+        <field name="name">pmo.sprint.form</field>
+        <field name="model">pmo.sprint</field>
+        <field name="arch" type="xml">
+            <form string="sprints">
+               <sheet>
+
+                   <header>
+                   <field name='status' widget="statusbar"/>
+                       <button name="set_sprint_to_new" string="Set sprint New" type="object" class="oe_highlight"/>
+                       <button name="set_sprint_to_planning" string="Set sprint Planning" type="object" class="oe_highlight"/>
+                       <button name="set_sprint_to_ongoing" string="Set sprint ongoing" type="object" class="oe_highlight"/>
+                       <button name="set_sprint_to_cancelled" string="Set sprint Cancelled" type="object" class="oe_highlight"/>
+                    </header>
+
+                   <!--Sequence.pmo.sprint-->
+                   <div class="oe_title">
+                       <h1>
+                           <field name= "sprint_sequence" readonly="1"/>
+                       </h1>
+                   </div>
+
+                   <h1 class="o_form_label"><font style="font-size: 20px;font-weight: bold;color:grey;">Montlhy Planning (PM/Dev/Contract/Customer needs)</font></h1>
+                            <div style="height:50px"></div>
+
+                   <group>
+                            <field name="name"/>
+                            <field name="planning_date"/>
+                            <field name="attendants"/>
+                            <field name="start"/>
+                            <field name="end"/>
+
+                   </group>
+                   <group>
+                            <field name="capacity_id"/>
+                            <field name="releaseq"/>
+                            <field name="notes"/>
+
+                   </group>
+
+                   <h1 class="o_form_label"><font style="font-size: 20px;font-weight: bold;color:grey;">Monthly Review (Project health, changes, team improvements)</font></h1>
+                            <div style="height:50px"></div>
+
+                   <group>
+                       <field name="review_well" />
+                       <field name="improvements"/>
+
+                   </group>
+
+
+               </sheet>
+
+
+                <!--Chatter and notes frame -->
+               <div class="oe_chatter">
+                   <field name="message_follower_ids" widget="mail_followers"/>
+                   <field name="activity_ids" widget="mail_activity"/>
+                   <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+               </div>
+
+            </form>
+        </field>
+    </record>
+
+    <!--kanban view -->
+    <record id="sprint_kanban" model="ir.ui.view">
+            <field name="name">pmo.sprint.kanban</field>
+            <field name="model">pmo.sprint</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title"><field name="name"/></strong>
+                                    <div class="o_kanban_tags_section"/>
+                                    <ul>
+                                        <li>Attendants : <field name="attendants"/></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+
+
+
+    <!--action of the sprints menu -->
+    <record id="action_sprint" model="ir.actions.act_window">
+        <field name="name">sprints</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmo.sprint</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create first sprint!
+            </p>
+        </field>
+    </record>
+    <menuitem id="pmo_root" name="PMO" sequence="0" web_icon="pmo,static/src/img/icon.png"/>
+    <menuitem id="pmo_sprint" name="Sprint" parent="pmo_root" action="action_sprint"/>
+
+</odoo>

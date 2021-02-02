@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+   <!-- Form View Capacity -->
+   <record id="overalltable_form" model="ir.ui.view">
+       <field name="name">Overalltable</field>
+       <field name="model">overalltable.overalltable</field>
+       <field name="arch" type="xml">
+           <form string = "Overalltable">
+                   <group>
+                       <group>
+                           <field name="name"/>
+                           <field name="overalltable_id"/>
+                           <field name="feb"/>
+                           <field name="mrz"/>
+                           <field name="apr"/>
+                           <field name="mai"/>
+                           <field name="jun"/>
+                           <field name="jul"/>
+                           <field name="aug"/>
+                           <field name="sep"/>
+                           <field name="okt"/>
+                           <field name="nov"/>
+                           <field name="dec"/>
+
+                       </group>
+                   </group>
+           </form>
+       </field>
+   </record>
+
+   <!-- Tree View Overall -->
+   <record id="overalltable_tree" model="ir.ui.view">
+       <field name="name">Overalltable</field>
+       <field name="model">overalltable.overalltable</field>
+       <field name="arch" type="xml">
+           <tree>
+               <field name="name"/>
+               <field name="overalltable_id"/>
+               <field name="feb"/>
+               <field name="feb"/>
+               <field name="mrz"/>
+               <field name="apr"/>
+               <field name="mai"/>
+               <field name="jun"/>
+               <field name="jul"/>
+               <field name="aug"/>
+               <field name="sep"/>
+               <field name="okt"/>
+               <field name="nov"/>
+               <field name="dec"/>
+           </tree>
+       </field>
+   </record>
+
+   <!-- Action For Overall -->
+   <record id="overalltable_action" model="ir.actions.act_window">
+       <field name="name">Overall</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">overalltable.overalltable</field>
+       <field name="view_mode">tree,form</field>
+   </record>
+   <!-- Menu Overall
+   <menuitem id="overalltable_menu" name="overalltable" sequence="1" parent="pmo_overall" action="overalltable_action"/>
+   -->
+</odoo>
+

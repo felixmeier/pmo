@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <!--tree view of the overall model -->
+    <record id="overall_tree" model ="ir.ui.view">
+        <field name="name">pmo.overall.tree</field>
+        <field name="model">pmo.overall</field>
+        <field name="arch" type="xml">
+            <tree string="overalls">
+                <field name="overall_year"/>
+            </tree>
+        </field>
+    </record>
+
+
+
+<!--form view of the overall model -->
+    <record id="overall_form" model="ir.ui.view">
+        <field name="name">pmo.overall.form</field>
+        <field name="model">pmo.overall</field>
+        <field name="arch" type="xml">
+            <form string="overalls">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="overall_year"/>
+
+                        </group>
+                    </group>
+                    <field name="overall_id"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--action of the overall menu -->
+    <record id="action_overall" model="ir.actions.act_window">
+        <field name="name">overalls</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pmo.overall</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create first overall!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="pmo_overall" name="Overall" parent="pmo_root" action="action_overall" sequence="30"/>
+
+</odoo>

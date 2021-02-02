@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_pmo_sprint,access.pmo.sprint,model_pmo_sprint,,1,1,1,1
+
+access_capacity_capacity,capacity.capacity,model_capacity_capacity,,1,1,1,1
+
+access_pmo_overall,access.pmo.overall,model_pmo_overall,,1,1,1,1
+
+access_overalltable_overalltable,overalltable.overalltable,model_overalltable_overalltable,,1,1,1,1

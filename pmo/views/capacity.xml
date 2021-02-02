@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+   <!-- Form View Capacity -->
+   <record id="capacity_form" model="ir.ui.view">
+       <field name="name">Capacity</field>
+       <field name="model">capacity.capacity</field>
+       <field name="arch" type="xml">
+           <form string = "Capacities">
+                   <group>
+                       <group>
+                           <field name="name"/>
+                           <field name="capacity_id"/>
+                           <field name="iscapacity_id"/>
+                           <field name="note_id"/>
+                       </group>
+                   </group>
+           </form>
+       </field>
+   </record>
+
+   <!-- Tree View Capacity -->
+   <record id="capacity_tree" model="ir.ui.view">
+       <field name="name">Capacity</field>
+       <field name="model">capacity.capacity</field>
+       <field name="arch" type="xml">
+           <tree>
+               <field name="name"/>
+               <field name="capacity_id"/>
+               <field name="iscapacity_id"/>
+               <field name="note_id"/>
+           </tree>
+       </field>
+   </record>
+
+   <!-- Action For Capacity -->
+   <record id="capacity_action" model="ir.actions.act_window">
+       <field name="name">Capacity</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">capacity.capacity</field>
+       <field name="view_mode">tree,form</field>
+   </record>
+   <!-- Menu Capacity -->
+   <menuitem id="capacity_menu" name="capacity" sequence="1" parent="pmo_sprint" action="capacity_action"/>
+</odoo>
+
